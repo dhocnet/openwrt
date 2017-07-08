@@ -1,9 +1,9 @@
 PETUNJUK: A6.dts
 ----------------
 Salin A6.dts ke **<openwrt_root_dir>/target/linux/ramips/dts**
-'''
+```
 $ cp A6.dts <folder_root_openwrt>/target/linux/ramips/dts
-'''
+```
 
 CATATAN: A6.patch
 -----------------
@@ -13,11 +13,11 @@ INFO SETELAH MELAKUKAN PATCH
 ----------------------------
 Setelah file-file target berhasil ditambal dan pilihan Tenda A6 tidak juga terlihat, 
 hapus semua isi direktori *tmp* dengan perintah:
-'''
+```
 <folder_root_openwrt>$ rm -rf tmp/*
-'''
+```
 
 Lalu jalankan lagi perintah:
-'''
+```
 <folder_root_openwrt>$ make menuconfig
-'''
+```
