@@ -5,7 +5,7 @@ Salin A6.dts ke **<openwrt_root_dir>/target/linux/ramips/dts**
 $ cp A6.dts <folder_root_openwrt>/target/linux/ramips/dts
 ```
 
-CATATAN: A6.patch
+CATATAN: A6-orig.patch
 -----------------
 File patch sudah cukup tua, lakukan copy-paste manual ke setiap file target untuk mendapatkan tingkat keberhasilan yang tinggi.
 
