@@ -1,0 +1,19 @@
+*** /mnt/pub3/src/openwrt/cc/openwrt/package/libs/lzo/Makefile	2017-07-09 02:18:55.248986091 +0800
+--- /mnt/pub3/proyek/openwrt/tenda/a6/openwrt/package/libs/lzo/Makefile	2017-07-09 02:53:52.842892572 +0800
+***************
+*** 12,18 ****
+  PKG_RELEASE:=1
+  
+  PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+! PKG_SOURCE_URL:=http://www.oberhumer.com/opensource/lzo/download/
+  PKG_MD5SUM:=fcec64c26a0f4f4901468f360029678f
+  
+  PKG_FIXUP:=autoreconf
+--- 12,18 ----
+  PKG_RELEASE:=1
+  
+  PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+! PKG_SOURCE_URL:=https://ftp.osuosl.org/pub/blfs/conglomeration/lzo/
+  PKG_MD5SUM:=fcec64c26a0f4f4901468f360029678f
+  
+  PKG_FIXUP:=autoreconf
