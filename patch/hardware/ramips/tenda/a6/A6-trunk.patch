@@ -1,0 +1,89 @@
+diff -crB /mnt/pub3/src/openwrt/target/linux/ramips/base-files/etc/board.d/02_network ../openwrt/target/linux/ramips/base-files/etc/board.d/02_network
+*** /mnt/pub3/src/openwrt/target/linux/ramips/base-files/etc/board.d/02_network	2017-07-08 21:28:49.817762100 +0800
+--- ../openwrt/target/linux/ramips/base-files/etc/board.d/02_network	2017-07-08 22:11:54.356646870 +0800
+***************
+*** 126,131 ****
+--- 126,136 ----
+  	ubnt-erx|\
+  	ur-326n4g|\
+  	wrtnode|\
++     a6)
++ 		ucidef_set_interface_lan "eth0.1"
++ 		ucidef_add_switch "switch0" "1" "1"
++ 		ucidef_add_switch_vlan "switch0" "1" "0 1 2 3 4 6t"
++ 		;;
+  	wrtnode2p | \
+  	wrtnode2r | \
+  	wt3020|\
+diff -crB /mnt/pub3/src/openwrt/target/linux/ramips/base-files/lib/ramips.sh ../openwrt/target/linux/ramips/base-files/lib/ramips.sh
+*** /mnt/pub3/src/openwrt/target/linux/ramips/base-files/lib/ramips.sh	2017-07-08 21:28:49.818762100 +0800
+--- ../openwrt/target/linux/ramips/base-files/lib/ramips.sh	2017-07-08 22:15:20.804637666 +0800
+***************
+*** 382,387 ****
+--- 382,390 ----
+  	*"SL-R7205"*)
+  		name="sl-r7205"
+  		;;
++     *"Tenda A6")
++         name="a6"
++         ;;
+  	*"TEW-691GR")
+  		name="tew-691gr"
+  		;;
+diff -crB /mnt/pub3/src/openwrt/target/linux/ramips/base-files/lib/upgrade/platform.sh ../openwrt/target/linux/ramips/base-files/lib/upgrade/platform.sh
+*** /mnt/pub3/src/openwrt/target/linux/ramips/base-files/lib/upgrade/platform.sh	2017-07-08 21:28:49.818762100 +0800
+--- ../openwrt/target/linux/ramips/base-files/lib/upgrade/platform.sh	2017-07-08 22:16:55.937633424 +0800
+***************
+*** 20,25 ****
+--- 20,26 ----
+  	3g-6200nl|\
+  	a5-v11|\
+  	ai-br100|\
++     a6|\
+  	air3gii|\
+  	all0239-3g|\
+  	all0256n|\
+Only in ../openwrt/target/linux/ramips/dts: A6.dts
+diff -crB /mnt/pub3/src/openwrt/target/linux/ramips/image/rt305x.mk ../openwrt/target/linux/ramips/image/rt305x.mk
+*** /mnt/pub3/src/openwrt/target/linux/ramips/image/rt305x.mk	2017-07-08 21:28:49.828762099 +0800
+--- ../openwrt/target/linux/ramips/image/rt305x.mk	2017-07-08 22:36:32.082580987 +0800
+***************
+*** 294,299 ****
+--- 294,300 ----
+  Image/Build/Profile/X5=$(call BuildFirmware/Poray8M/$(1),$(1),x5,X5)
+  Image/Build/Profile/X8=$(call BuildFirmware/Poray8M/$(1),$(1),x8,X8)
+  Image/Build/Profile/XDXRN502J=$(call BuildFirmware/Default4M/$(1),$(1),xdxrn502j,XDXRN502J)
++ Image/Build/Profile/A6=$(call BuildFirmware/Default4M/$(1),$(1),a6,A6)
+  
+  
+  define Image/Build/Profile/Default
+***************
+*** 388,392 ****
+--- 389,394 ----
+  	$(call Image/Build/Profile/X8,$(1))
+  	$(call Image/Build/Profile/XDXRN502J,$(1))
+  	$(call Image/Build/Profile/MZK-DP150N,$(1))
++ 	$(call Image/Build/Profile/A6,$(1))
+  
+  endef
+diff -crB /mnt/pub3/src/openwrt/target/linux/ramips/rt305x/profiles/tenda.mk ../openwrt/target/linux/ramips/rt305x/profiles/tenda.mk
+*** /mnt/pub3/src/openwrt/target/linux/ramips/rt305x/profiles/tenda.mk	2017-07-08 21:28:49.837762099 +0800
+--- ../openwrt/target/linux/ramips/rt305x/profiles/tenda.mk	2017-07-08 22:33:45.410588418 +0800
+***************
+*** 40,42 ****
+--- 40,54 ----
+  	Package set for Tenda W306R V2.0 board
+  endef
+  $(eval $(call Profile,W306R_V20))
++ 
++ define Profile/A6
++ 	NAME:=Tenda A6
++ 	PACKAGES:=kmod-usb-core kmod-usb-ohci kmod-usb2 kmod-ledtrig-usbdev \
++ 		kmod-i2c-core kmod-i2c-gpio
++ endef
++ 
++ define Profile/A6/Description
++ 	Package set for Tenda A6
++ endef
++ 
++ $(eval $(call Profile,A6))
