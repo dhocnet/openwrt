@@ -21,3 +21,8 @@ Lalu jalankan lagi perintah:
 ```
 <folder_root_openwrt>$ make menuconfig
 ```
+UPDATE: A6-trunk.patch
+----------------------
+Terdapat perubahan struktur/ kontruksi dari file **<openwrt_root_dir>/target/linux/ramips/Makefile** dengan ditambahkannya file **<openwrt_root_dir>/target/linux/ramips/image/rt305x.mk** sebagai *profile* untuk masing-masing hardware.
+
+Patch terbaru dapat dilihat pada file: `A6-trunk.patch`.
